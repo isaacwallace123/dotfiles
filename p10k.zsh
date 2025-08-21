@@ -1,0 +1,1 @@
+/home/isaac/dotfiles/.p10k.zsh
