@@ -1,5 +1,4 @@
 {
-  // ───────────────────────── LAYOUT ─────────────────────────
   "layer": "top",
   "position": "top",
   "height": 12,
@@ -8,11 +7,22 @@
   "margin-left": 8,
   "margin-right": 8,
 
-  "modules-left":   ["hyprland/workspaces", "hyprland/window"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
   "modules-center": [],
-  "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock"],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "custom/netvpn",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery",
+    "clock"
+  ],
 
-  // ─────────────────────── MODULES ──────────────────────────
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -20,7 +30,7 @@
     "format-icons": {
       "active": "●",
       "default": "○",
-      "urgent":  ""
+      "urgent": ""
     }
   },
 
@@ -45,9 +55,9 @@
     "scroll-step": 2,
     "format-icons": {
       "headphones": "",
-      "handsfree":  "",
-      "headset":    "",
-      "default": ["","",""]
+      "handsfree": "",
+      "headset": "",
+      "default": ["", "", ""]
     }
   },
 
@@ -58,13 +68,13 @@
     "on-scroll-down": "brightnessctl set 5%-"
   },
 
-  "network": {
-    "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-ethernet": "  {ifname}",
-    "format-disconnected": "  no net",
-    "tooltip-format-wifi": "{ipaddr} via {essid} {signaldBm} dBm",
-    "tooltip-format-ethernet": "{ifname} {ipaddr}",
-    "on-click": "nm-connection-editor"
+  "custom/netvpn": {
+    "exec": "~/dotfiles/waybar/.config/waybar/network-wg.sh",
+    "interval": 3,
+    "return-type": "json",
+    "tooltip": true,
+    "on-click": "nm-connection-editor",
+    "on-click-right": "sh -c 'WG_NAME=\"unraid-wg\"; if nmcli -t -f NAME,TYPE connection show --active | grep -q \"^${WG_NAME}:wireguard$\"; then nmcli connection down \"$WG_NAME\"; else nmcli connection up \"$WG_NAME\"; fi'"
   },
 
   "cpu": {
@@ -90,9 +100,9 @@
     "states": { "good": 80, "warning": 30, "critical": 15 },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
-    "format-plugged":  "  {capacity}%",
+    "format-plugged": "  {capacity}%",
     "format-alt": "{time}",
-    "format-icons": ["","","","",""]
+    "format-icons": ["", "", "", "", ""]
   },
 
   "clock": {

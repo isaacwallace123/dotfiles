@@ -14,11 +14,9 @@
   font-size: 12.5px;
 }
 
-window#waybar {
-  background: transparent;
-}
+window#waybar { background: transparent; }
 
-#workspaces, #window, #tray, #pulseaudio, #network, #cpu, #memory,
+#workspaces, #window, #tray, #pulseaudio, #cpu, #memory,
 #temperature, #battery, #backlight, #clock {
   color: @text;
   background: @surface;
@@ -44,35 +42,28 @@ window#waybar {
   color: white;
   background: linear-gradient(90deg, @red, @orange);
 }
-#workspaces button.urgent {
-  color: white;
-  background: @red;
-}
+#workspaces button.urgent { color: white; background: @red; }
 #workspaces button:hover { background: @surface2; }
 
 /* ─────────── Window title */
-#window {
-  color: @muted;
-  min-width: 200px;
-}
+#window { color: @muted; min-width: 200px; }
 
 /* ─────────── Module-specific colors */
-#network { background: rgba(255,112,67,0.2); }     /* orange wash */
 #pulseaudio.muted { color: @muted; opacity: .6; }
 #cpu, #memory, #temperature { background: @surface2; }
 #battery.charging { background: rgba(255,112,67,0.25); }
 #battery.warning  { background: rgba(255,193,7,0.25); color: @yellow; }
-#battery.critical { background: rgba(229,57,53,0.28); color: @red;  animation: pulse 1s infinite; }
+#battery.critical { background: rgba(229,57,53,0.28); color: @red; animation: pulse 1s infinite; }
 #clock { background: linear-gradient(90deg, @orange 0%, @red 100%); color: white; }
 
 /* ─────────── Tray */
 #tray { background: @surface2; }
 
 /* ─────────── Hover effect */
-
-#pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover,
-#temperature:hover, #battery:hover, #backlight:hover, #clock:hover, #tray:hover {
-  background-color: alpha(@surface2, 0.9); /* subtle darken on hover */
+#pulseaudio:hover, #cpu:hover, #memory:hover,
+#temperature:hover, #battery:hover, #backlight:hover,
+#clock:hover, #tray:hover, #custom-netvpn:hover {
+  background-color: alpha(@surface2, 0.9);
   transition: background-color 120ms ease-in-out;
 }
 
@@ -81,4 +72,40 @@ window#waybar {
   0% { box-shadow: 0 0 0 0 rgba(229,57,53,0.55); }
   70% { box-shadow: 0 0 0 8px rgba(229,57,53,0); }
   100% { box-shadow: 0 0 0 0 rgba(229,57,53,0); }
+}
+
+/* ─────────── Combined VPN + Network pill */
+#custom-netvpn,
+#custom-network-wg {
+  border-radius: 12px;
+  padding: 6px 14px;
+  margin: 0 6px;
+  font-weight: 600;
+  background: @surface2;
+  color: white;
+}
+
+/* No network → dark gray */
+#custom-netvpn.net-down,
+#custom-network-wg.net-down {
+  background: #2a2a2a;
+  color: #888888;
+}
+
+/* Wi-Fi/Ethernet + VPN OFF → normal gray */
+#custom-netvpn.vpn-off.net-wifi,
+#custom-netvpn.vpn-off.net-ethernet,
+#custom-network-wg.vpn-off.net-wifi,
+#custom-network-wg.vpn-off.net-ethernet {
+  background: @surface2;
+  color: white;
+}
+
+/* Wi-Fi/Ethernet + VPN ON → orange→red gradient (same as clock) */
+#custom-netvpn.vpn-on.net-wifi,
+#custom-netvpn.vpn-on.net-ethernet,
+#custom-network-wg.vpn-on.net-wifi,
+#custom-network-wg.vpn-on.net-ethernet {
+  background: linear-gradient(90deg, @orange 0%, @red 100%);
+  color: #ffffff;
 }

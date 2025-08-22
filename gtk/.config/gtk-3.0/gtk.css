@@ -1,0 +1,29 @@
+window, .background {
+    background-color: #1a0b0b;
+    color: #f2dada;
+}
+
+sidebar, .view, .frame {
+    background-color: #2a1010;
+    color: #ffccaa;
+}
+
+selected, selection {
+    background-color: #ff4c2b;
+    color: #ffffff;
+}
+
+headerbar {
+    background: #2a0a0a;
+    color: #ffb366;
+}
+
+button {
+    background: #441111;
+    color: #ffb366;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #662222;
+}

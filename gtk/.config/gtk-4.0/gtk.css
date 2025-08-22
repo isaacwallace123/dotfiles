@@ -1,0 +1,26 @@
+window, .thunar-window {
+  background-color: #1a0b0b;
+  color: #e6dada;
+}
+
+.thunar .sidebar .view {
+  background-color: #2a1010;
+  color: #ff8844;
+}
+
+.thunar .view:selected,
+.thunar .view:selected:focus {
+  background-color: #552222;
+  color: #ffffff;
+}
+
+headerbar, .thunar-toolbar {
+  background-color: #100505;
+  color: #ff5c57;
+}
+
+.thunar-path-bar button {
+  background-color: #2a1010;
+  color: #ff6666;
+  border-radius: 6px;
+}
