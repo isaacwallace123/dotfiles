@@ -2,8 +2,8 @@
   // ───────────────────────── LAYOUT ─────────────────────────
   "layer": "top",
   "position": "top",
-  "height": 32,
-  "spacing": 8,
+  "height": 12,
+  "spacing": 5,
   "margin-top": 6,
   "margin-left": 8,
   "margin-right": 8,
