@@ -1,13 +1,84 @@
+/* ─────────── Colors */
+@define-color bg        #1b1b1d;
+@define-color surface   #232327;
+@define-color surface2  #2b2b2f;
+@define-color text      #eaeaea;
+@define-color muted     #b6b6b6;
+@define-color orange    #ff7043;  /* primary */
+@define-color red       #e53935;  /* accent / warning */
+@define-color yellow    #ffc107;
+
+/* ─────────── Bar base */
 * {
-  font-family: "Inter";
-  font-size: 12px;
+  font-family: "Inter", "JetBrainsMono Nerd Font", monospace;
+  font-size: 12.5px;
 }
 
-#network, #battery, #clock {
-  padding: 0 8px;
-  color: #ffffff;
+window#waybar {
+  background: transparent;
 }
 
-#network { background: #e53935; }   /* red */
-#battery { background: #ff7043; }   /* orange */
-#clock   { background: #ff5722; }   /* deep orange */
+#workspaces, #window, #tray, #pulseaudio, #network, #cpu, #memory,
+#temperature, #battery, #backlight, #clock {
+  color: @text;
+  background: @surface;
+  border-radius: 12px;
+  padding: 6px 10px;
+  margin: 0 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+/* Make left modules share a pill look */
+#workspaces { padding: 4px 8px; }
+
+/* ─────────── Workspaces */
+#workspaces button {
+  color: @muted;
+  background: transparent;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin: 0 3px;
+  transition: all .15s ease;
+}
+#workspaces button.active {
+  color: white;
+  background: linear-gradient(90deg, @red, @orange);
+}
+#workspaces button.urgent {
+  color: white;
+  background: @red;
+}
+#workspaces button:hover { background: @surface2; }
+
+/* ─────────── Window title */
+#window {
+  color: @muted;
+  min-width: 200px;
+}
+
+/* ─────────── Module-specific colors */
+#network { background: rgba(255,112,67,0.2); }     /* orange wash */
+#pulseaudio.muted { color: @muted; opacity: .6; }
+#cpu, #memory, #temperature { background: @surface2; }
+#battery.charging { background: rgba(255,112,67,0.25); }
+#battery.warning  { background: rgba(255,193,7,0.25); color: @yellow; }
+#battery.critical { background: rgba(229,57,53,0.28); color: @red;  animation: pulse 1s infinite; }
+#clock { background: linear-gradient(90deg, @orange 0%, @red 100%); color: white; }
+
+/* ─────────── Tray */
+#tray { background: @surface2; }
+
+/* ─────────── Hover effect */
+
+#pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover,
+#temperature:hover, #battery:hover, #backlight:hover, #clock:hover, #tray:hover {
+  background-color: alpha(@surface2, 0.9); /* subtle darken on hover */
+  transition: background-color 120ms ease-in-out;
+}
+
+/* ─────────── Pulse keyframe */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(229,57,53,0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(229,57,53,0); }
+  100% { box-shadow: 0 0 0 0 rgba(229,57,53,0); }
+}
