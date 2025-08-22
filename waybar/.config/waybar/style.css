@@ -1,0 +1,13 @@
+* {
+  font-family: "Inter";
+  font-size: 12px;
+}
+
+#network, #battery, #clock {
+  padding: 0 8px;
+  color: #ffffff;
+}
+
+#network { background: #e53935; }   /* red */
+#battery { background: #ff7043; }   /* orange */
+#clock   { background: #ff5722; }   /* deep orange */
