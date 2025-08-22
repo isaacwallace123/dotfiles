@@ -75,6 +75,6 @@ These configs aim for a **modern red/orange theme** with a clean workflow.
 
 Clone into `~/dotfiles` and stow:
 ```bash
-git clone git@github.com:USERNAME/dotfiles.git ~/dotfiles
+git clone git@github.com:isaacwallace123/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 stow -v hypr kitty waybar zsh fastfetch nvim -t ~
