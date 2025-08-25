@@ -1,0 +1,129 @@
+/* =========================
+   GIMP 3 – Photoshop 25 look
+   Put this in: ~/.config/GIMP/3.0/gimp.css
+   ========================= */
+
+/* --- Palette --- */
+@define-color ps-bg           #323232;  /* main panels */
+@define-color ps-bg2          #2C2C2C;  /* headerbars/toolbars */
+@define-color ps-border       #424242;
+@define-color ps-text         #E0E0E0;
+@define-color ps-text-weak    #C8C8C8;
+@define-color ps-selected     #4C4C4C;
+@define-color ps-button       #424242;
+@define-color ps-button-hover #4A4A4A;
+@define-color ps-button-act   #4F4F4F;
+@define-color ps-accent       #5A5A5A;  /* subtle, not blue */
+
+/* --- Global reset / kill gradients & maroon --- */
+* {
+  background-image: none !important;
+  color: @ps-text !important;
+  -gtk-icon-style: symbolic;
+}
+
+/* --- Global backgrounds/borders --- */
+window, .background, .view, .gimp, .gimp-window,
+.gimp-dock, .gimp-dockable, .gimp-dockbook, .gimp-editor,
+.gimp-image-window, .gimp-toolbox, scrolledwindow, frame,
+grid, box, stack, paned, notebook, separator {
+  background-color: @ps-bg !important;
+  border-color: @ps-border !important;
+}
+
+/* --- Headerbar / menubar / toolbars --- */
+headerbar, .titlebar, menubar, toolbar, .primary-toolbar {
+  background-color: @ps-bg2 !important;
+  color: @ps-text !important;
+  border-bottom: 1px solid @ps-border !important;
+}
+
+/* --- Buttons & toggles --- */
+button, .button, .linked > button, .linked > .button,
+.toggle, togglebutton {
+  background-color: @ps-button !important;
+  color: @ps-text !important;
+  border: 1px solid @ps-border !important;
+  box-shadow: none !important;
+}
+button:hover { background-color: @ps-button-hover !important; }
+button:active, button:checked, togglebutton:checked {
+  background-color: @ps-button-act !important;
+  border-color: @ps-border !important;
+}
+spinbutton button, combobox button { background-color: @ps-button !important; }
+
+/* --- Inputs --- */
+entry, spinbutton, combobox, textview, .view text,
+searchentry {
+  background-color: shade(@ps-bg, 1.06) !important;  /* ~#2E2E2E */
+  color: @ps-text !important;
+  border: 1px solid @ps-border !important;
+  box-shadow: none !important;
+}
+
+/* --- Tabs --- */
+notebook > header, notebook tab {
+  background-color: @ps-bg2 !important;
+  color: @ps-text !important;
+  border-color: @ps-border !important;
+}
+notebook tab:checked {
+  background-color: @ps-selected !important;
+  color: #FFFFFF !important;
+}
+
+/* --- Sliders / scales --- */
+scale trough { background-color: @ps-bg2 !important; border: 1px solid @ps-border !important; }
+scale slider, scale highlight { background-color: @ps-accent !important; border: 1px solid @ps-border !important; }
+
+/* --- Progress / level bars --- */
+progressbar, progressbar trough { background-color: @ps-bg2 !important; border: 1px solid @ps-border !important; }
+progressbar progress { background-color: @ps-accent !important; }
+
+/* --- Scrollbars --- */
+scrollbar, scrollbar trough { background-color: @ps-bg2 !important; }
+scrollbar slider { background-color: @ps-accent !important; border: 1px solid @ps-border !important; }
+
+/* --- Lists / treeviews --- */
+treeview, list { background-color: @ps-bg !important; color: @ps-text !important; }
+treeview.view:selected, list row:selected, .view:selected, selection {
+  background-color: @ps-selected !important; color: #FFFFFF !important;
+}
+treeview header, treeview header button { background-color: @ps-bg2 !important; }
+
+/* --- Popovers / tooltips --- */
+popover, .popover { background-color: @ps-bg2 !important; border: 1px solid @ps-border !important; }
+tooltip, .tooltip { background-color: shade(@ps-bg, 1.2) !important; color: #FFFFFF !important; }
+
+/* --- Statusbar --- */
+statusbar { background-color: @ps-bg2 !important; color: @ps-text-weak !important; border-top: 1px solid @ps-border !important; }
+
+/* --- Checkboxes / radios --- */
+check, radio {
+  background-color: @ps-button !important;
+  border: 1px solid @ps-border !important;
+}
+check:checked, radio:checked {
+  background-color: @ps-accent !important;
+  border-color: @ps-border !important;
+}
+
+/* --- GIMP-specific panes --- */
+.gimp-tool-options, .gimp-layer-editor, .gimp-channels-editor,
+.gimp-paths-editor, .gimp-undo-editor, .gimp-device-status,
+.gimp-templates-list, .gimp-brush-grid, .gimp-patterns-grid {
+  background-color: @ps-bg !important;
+  color: @ps-text !important;
+}
+
+/* --- Layer/Tool option headers and footers --- */
+.gimp-dockable .title, .gimp-editor .title, .gimp-dockable .header {
+  background-color: @ps-bg2 !important;
+  color: @ps-text !important;
+  border-bottom: 1px solid @ps-border !important;
+}
+
+/* --- Kill any leftover accent/red from themes --- */
+* { caret-color: @ps-text !important; }
+:link, .link { color: @ps-text-weak !important; }
