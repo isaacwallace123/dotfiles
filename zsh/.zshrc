@@ -129,3 +129,6 @@ export PAGER=less
 # Language/locale (sometimes needed)
 export LANG=en_CA.UTF-8
 export GPG_TTY=$(tty)
+
+export QT_ENABLE_HIGHDPI_SCALING=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
