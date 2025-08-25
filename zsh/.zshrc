@@ -112,3 +112,20 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Preferred terminal
+export TERMINAL=kitty
+
+# Preferred editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Preferred browser
+export BROWSER=floorp
+
+# Default pager
+export PAGER=less
+
+# Language/locale (sometimes needed)
+export LANG=en_CA.UTF-8
+export GPG_TTY=$(tty)
